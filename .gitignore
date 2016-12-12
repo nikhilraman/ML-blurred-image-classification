@@ -1,7 +1,11 @@
 # Compiled source #
 ###################
 
-
+# Images and data #
+################### 
+*.jpg
+*.png
+*.data
 
 # Logs #
 ######################
