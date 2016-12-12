@@ -91,35 +91,41 @@ if __name__ == "__main__":
 	# svmModel = svm.SVC(kernel="rbf")  
 
 	# C = 290 		-- Full dataset, just magnitudes, np.gradient
-	# gamma = 26	-- 
+	# gamma = 26	-- 0.70 accuracy
 
-	svr =  svm.SVC(kernel='rbf') 
+	# C = 300 		-- Full dataset, magnitudes and directions, np.gradient
+	# gamma = 3	-- 0.79 accuracy
+
+
+	# svr =  svm.SVC(kernel='rbf') 
 	# param_grid1 = {'C': [ 250, 290, 300, 310, 350, 400, ], 'gamma': [20, 23, 24, 25, 26, 27, 28, 30, 35, 40,], 'kernel': ['rbf']}
-	param_grid1 = {'C': [0.01, 0.03, 0.06, 0.1, 0.3, 0.6, 1, 3, 6, 10, 30, 60, 100, 300], 'gamma': [0.01, 0.03, 0.06, 0.1, 0.3, 0.6, 1, 3, 6, 10, 30, 60, 100], 'kernel': ['rbf']}
-	svmModel = GridSearchCV(svr, param_grid = param_grid1, cv = 8) # cv = 3 
+	# param_grid1 = {'C': [100, 280, 285, 290, 295, 300, 305, 310, 315, 320, 400], 'gamma': [ 0.3, 0.6, 1, 2,2.5,3,3.5, 4,5,6, 10], 'kernel': ['rbf']}
+	# svmModel = GridSearchCV(svr, param_grid = param_grid1, cv = 8) # cv = 3 
 	#clf.fit(Xtrain, ytrain)    
 
+	svmModel = svm.SVC(C=310, kernel="rbf", gamma=3)
 	svmModel.fit(Xtrain, ytrain)  
 
-	print "Best score:"
-	print svmModel.best_score_  
-	print "Best params:"
-	print svmModel.best_params_ 
+	# print "Best score:"
+	# print svmModel.best_score_  
+	# print "Best params:"
+	# print svmModel.best_params_ 
 
 	# svmModel.fit(Xtrain, ytrain)  
 
-	# print "Predicting Labels"
+	print "Predicting Labels"
 
-	# ypreds = svmModel.predict(Xtest) 
+	ypreds = svmModel.predict(Xtest) 
+	print ypreds
 
-	# smallSampleAccuracyScore = accuracy_score(ypreds, ytest)
+	smallSampleAccuracyScore = accuracy_score(ypreds, ytest)
 
-	# print "Full -- TEST ACCURACY: " + str(smallSampleAccuracyScore) 
+	print "Full -- TEST ACCURACY: " + str(smallSampleAccuracyScore) 
 
-	# ypreds = svmModel.predict(Xtrain)
-	# smallSampleTrainScore = accuracy_score(ypreds, ytrain)
+	ypreds = svmModel.predict(Xtrain)
+	smallSampleTrainScore = accuracy_score(ypreds, ytrain)
 
-	# print "Full -- TRAINING ACCURACY: " + str(smallSampleTrainScore)
+	print "Full -- TRAINING ACCURACY: " + str(smallSampleTrainScore)
 
 
 
