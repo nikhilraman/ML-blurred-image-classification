@@ -5,7 +5,13 @@
 ################### 
 *.jpg
 *.png
-*.data
+*.data 
+src/*.jpg
+src/*.png
+src/*.data
+src/'SVM Analysis'/*.jpg
+src/'SVM Analysis'/*.png
+src/'SVM Analysis'/*.data 
 
 # Logs #
 ######################
